@@ -1,0 +1,6 @@
+mkdocs
+mkdocs-material
+feedparser
+beautifulsoup4
+httpx
+pyyaml

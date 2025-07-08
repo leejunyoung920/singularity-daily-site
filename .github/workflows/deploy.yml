@@ -1,0 +1,38 @@
+name: Daily Update & Deploy
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 매일 새벽 1시 UTC (한국 오전 10시)
+  workflow_dispatch:     # 수동 실행 버튼도 허용
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Git checkout
+        uses: actions/checkout@v3
+
+      - name: 🔧 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🔑 Set API Key
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: echo "CLAUDE_API_KEY=${CLAUDE_API_KEY}" >> $GITHUB_ENV
+
+      - name: 📰 Collect articles
+        run: python scripts/collect_articles.py
+
+      - name: 🧭 Update navigation
+        run: python scripts/update_nav.py
+
+      - name: 🚀 Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
