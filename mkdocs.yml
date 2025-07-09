@@ -1,6 +1,9 @@
 nav:
 - 홈: index.md
 - 기사 모음:
+  - 우리의 바쁜 우주: articles/2025-07-09_우리의_바쁜_우주.md
+  - 시간이란 무엇일까요?: articles/2025-07-09_시간이란_무엇일까요?.md
+  - 깊은 시간이 산호초에 대해 알려주는 것: articles/2025-07-09_깊은_시간이_산호초에_대해_알려주는_것.md
   - 'Video Friday: This Quadruped Throws With Its Whole': articles/2025-07-09_Video_Friday:_This_Quadruped_Throws_With_Its_Whole.md
   - 'Video Friday: Cyborg Beetles May Speed Disaster Re': articles/2025-07-09_Video_Friday:_Cyborg_Beetles_May_Speed_Disaster_Re.md
   - This Week’S Awesome Tech Stories From Around The W: articles/2025-07-09_This_Week’s_Awesome_Tech_Stories_From_Around_the_W.md
