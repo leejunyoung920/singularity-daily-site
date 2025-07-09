@@ -1,0 +1,22 @@
+nav:
+- 홈: index.md
+- 기사 모음:
+  - 'Video Friday: This Quadruped Throws With Its Whole': articles/2025-07-09_Video_Friday:_This_Quadruped_Throws_With_Its_Whole.md
+  - 'Video Friday: Cyborg Beetles May Speed Disaster Re': articles/2025-07-09_Video_Friday:_Cyborg_Beetles_May_Speed_Disaster_Re.md
+  - This Week’S Awesome Tech Stories From Around The W: articles/2025-07-09_This_Week’s_Awesome_Tech_Stories_From_Around_the_W.md
+  - 'The Download: Hunting An Asteroid, And Unlocking T': articles/2025-07-09_The_Download:_hunting_an_asteroid,_and_unlocking_t.md
+  - 'Shifting Forces: The Evolving Debate Around Dark E': articles/2025-07-09_Shifting_Forces:_The_Evolving_Debate_Around_Dark_E.md
+  - Scientists Launch Moonshot To Build An Entire Huma: articles/2025-07-09_Scientists_Launch_Moonshot_to_Build_an_Entire_Huma.md
+  - Robotic Arm “Feels” Using Sound: articles/2025-07-09_Robotic_Arm_“Feels”_Using_Sound.md
+  - Building An Innovation Ecosystem For The Next Cent: articles/2025-07-09_Building_an_innovation_ecosystem_for_the_next_cent.md
+  - Battling Next Gen Financial Fraud: articles/2025-07-09_Battling_next-gen_financial_fraud.md
+  - This Week’S Awesome Tech Stories From Around The W: articles/2025-07-08_This_Week’s_Awesome_Tech_Stories_From_Around_the_W.md
+  - The Digital Future Of Industrial And Operational W: articles/2025-07-08_The_digital_future_of_industrial_and_operational_w.md
+  - Scientists Launch Moonshot To Build An Entire Huma: articles/2025-07-08_Scientists_Launch_Moonshot_to_Build_an_Entire_Huma.md
+  - Producing Tangible Business Benefits From Modern I: articles/2025-07-08_Producing_tangible_business_benefits_from_modern_i.md
+  - Inside The Most Dangerous Asteroid Hunt Ever: articles/2025-07-08_Inside_the_most_dangerous_asteroid_hunt_ever.md
+  - Could Electric Brain Stimulation Make You Better A: articles/2025-07-08_Could_Electric_Brain_Stimulation_Make_You_Better_a.md
+  - Agi모델: articles/2025-07-07_AGI모델.md
+site_name: Singularity Daily
+theme:
+  name: material
