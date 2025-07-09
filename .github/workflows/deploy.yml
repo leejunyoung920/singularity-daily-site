@@ -35,4 +35,10 @@ jobs:
         run: python scripts/update_nav.py
 
       - name: 🚀 Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "leejunyoung920"
+          git config --global user.email "leejunyoung920@users.noreply.github.com"
+          mkdocs gh-deploy --force --remote-branch gh-pages --remote-name origin
+
