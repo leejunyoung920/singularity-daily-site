@@ -1,27 +1,22 @@
 nav:
 - 홈: index.md
 - 기사 모음:
-  - 우리의 바쁜 우주: articles/2025-07-09_우리의_바쁜_우주.md
-  - 시간이란 무엇일까요?: articles/2025-07-09_시간이란_무엇일까요?.md
-  - 깊은 시간이 산호초에 대해 알려주는 것: articles/2025-07-09_깊은_시간이_산호초에_대해_알려주는_것.md
-  - 'Video Friday: This Quadruped Throws With Its Whole': articles/2025-07-09_Video_Friday:_This_Quadruped_Throws_With_Its_Whole.md
-  - 'Video Friday: Cyborg Beetles May Speed Disaster Re': articles/2025-07-09_Video_Friday:_Cyborg_Beetles_May_Speed_Disaster_Re.md
-  - This Week’S Awesome Tech Stories From Around The W: articles/2025-07-09_This_Week’s_Awesome_Tech_Stories_From_Around_the_W.md
-  - 'The Download: Hunting An Asteroid, And Unlocking T': articles/2025-07-09_The_Download:_hunting_an_asteroid,_and_unlocking_t.md
-  - 'Shifting Forces: The Evolving Debate Around Dark E': articles/2025-07-09_Shifting_Forces:_The_Evolving_Debate_Around_Dark_E.md
-  - Scientists Launch Moonshot To Build An Entire Huma: articles/2025-07-09_Scientists_Launch_Moonshot_to_Build_an_Entire_Huma.md
-  - Robotic Arm “Feels” Using Sound: articles/2025-07-09_Robotic_Arm_“Feels”_Using_Sound.md
-  - Building An Innovation Ecosystem For The Next Cent: articles/2025-07-09_Building_an_innovation_ecosystem_for_the_next_cent.md
-  - Battling Next Gen Financial Fraud: articles/2025-07-09_Battling_next-gen_financial_fraud.md
-  - This Week’S Awesome Tech Stories From Around The W: articles/2025-07-08_This_Week’s_Awesome_Tech_Stories_From_Around_the_W.md
-  - The Digital Future Of Industrial And Operational W: articles/2025-07-08_The_digital_future_of_industrial_and_operational_w.md
-  - Scientists Launch Moonshot To Build An Entire Huma: articles/2025-07-08_Scientists_Launch_Moonshot_to_Build_an_Entire_Huma.md
-  - Producing Tangible Business Benefits From Modern I: articles/2025-07-08_Producing_tangible_business_benefits_from_modern_i.md
-  - Inside The Most Dangerous Asteroid Hunt Ever: articles/2025-07-08_Inside_the_most_dangerous_asteroid_hunt_ever.md
-  - Could Electric Brain Stimulation Make You Better A: articles/2025-07-08_Could_Electric_Brain_Stimulation_Make_You_Better_a.md
-  - Agi모델: articles/2025-07-07_AGI모델.md
+  - 2025년:
+    - 07월:
+      - 피라미드 건설을 지탱했던 빵 만들기: articles/2025/07/2025-07-10_피라미드_건설을_지탱했던_빵_만들기.md
+      - 재난 대응에 사이보그 딱정벌레가 도움이 될 수 있는 미래: articles/2025/07/2025-07-10_재난_대응에_사이보그_딱정벌레가_도움이_될_수_있는_미래.md
+      - 인공지능 규제 유예 법안의 좌절이 새로운 정치 시대를 예고할 수 있는 이유: articles/2025/07/2025-07-10_인공지능_규제_유예_법안의_좌절이_새로운_정치_시대를_예고할_수_있는_이유.md
+      - 이 사족 로봇이 전신을 사용해 던지는 것을 보여줍니다: articles/2025/07/2025-07-10_이_사족_로봇이_전신을_사용해_던지는_것을_보여줍니다.md
+      - 웹에서 발견한 이 주의 최신 기술 이야기들: articles/2025/07/2025-07-10_웹에서_발견한_이_주의_최신_기술_이야기들.md
+      - '오픈Ai 제국의 내부: 카렌 하오와의 대화': articles/2025/07/2025-07-10_오픈AI_제국의_내부:_카렌_하오와의_대화.md
+      - 오래 살기 위해서는 머리에 있는 것일 수도 있다: articles/2025/07/2025-07-10_오래_살기_위해서는_머리에_있는_것일_수도_있다.md
+      - 시간이란 무엇일까?: articles/2025/07/2025-07-10_시간이란_무엇일까?.md
+      - 소리를 통해 "느끼는" 로봇 팔: articles/2025/07/2025-07-10_소리를_통해_"느끼는"_로봇_팔.md
+      - '변화하는 힘: 암흑 에너지에 대한 토론의 진화': articles/2025/07/2025-07-10_변화하는_힘:_암흑_에너지에_대한_토론의_진화.md
+      - 과학자들, 인간 유전체를 처음부터 만들기 위한 대규모 프로젝트 시작: articles/2025/07/2025-07-10_과학자들,_인간_유전체를_처음부터_만들기_위한_대규모_프로젝트_시작.md
+      - 'Openai 제국에 대한 대화: Karen Hao와의 대화': articles/2025/07/2025-07-10_OpenAI_제국에_대한_대화:_Karen_Hao와의_대화.md
 site_name: Singularity Daily
 theme:
-  name: material
   extra_css:
-    - stylesheets/extra.css
+  - stylesheets/extra.css
+  name: material
