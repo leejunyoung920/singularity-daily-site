@@ -23,6 +23,7 @@ RSS_FEEDS = [
     "https://nautil.us/feed/",
     "https://www.neurotechreports.com/rss.xml",
     "https://a16z.com/feed/"
+    "https://the-decoder.com/feed/"
 ]
 
 # 3. 기사 요약 함수 (Claude 사용)
