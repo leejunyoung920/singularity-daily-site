@@ -23,3 +23,5 @@ nav:
 site_name: Singularity Daily
 theme:
   name: material
+  extra_css:
+    - stylesheets/extra.css
