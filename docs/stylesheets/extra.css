@@ -1,0 +1,10 @@
+/* docs/stylesheets/extra.css */
+
+.md-sidebar {
+  max-height: 80vh;    /* 화면 높이 80% 만큼 최대 높이 지정 */
+  overflow-y: auto;    /* 세로 스크롤 자동 생성 */
+  position: sticky;    /* 스크롤 시 사이드바 고정 */
+  top: 0;              /* 상단 고정 위치 */
+  padding-right: 8px;  /* 스크롤바 공간 확보용 여백 */
+  box-sizing: border-box;
+}
