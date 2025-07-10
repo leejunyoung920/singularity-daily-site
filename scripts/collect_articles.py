@@ -90,9 +90,16 @@ def extract_article_content(url):
 
 # 5. 마크다운 파일 저장 함수
 def save_to_markdown(title, url, summary, original_title=None):
-    today = datetime.date.today().strftime("%Y-%m-%d")
+    today = datetime.date.today()
+    year = today.strftime("%Y")
+    month = today.strftime("%m")
+    date = today.strftime("%Y-%m-%d")
+
     safe_title = "_".join(title.strip().split())[:50].replace('/', '-')
-    filename = f"docs/articles/{today}_{safe_title}.md"
+    dir_path = os.path.join("docs", "articles", year, month)
+    os.makedirs(dir_path, exist_ok=True)
+    filename = f"{date}_{safe_title}.md"
+    filepath = os.path.join(dir_path, filename)
 
     content = f"""# {title}
 
@@ -105,7 +112,7 @@ def save_to_markdown(title, url, summary, original_title=None):
 ## 원문 링크
 [{url}]({url})
 """
-    with open(filename, "w", encoding="utf-8") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
 
 def is_duplicate(title):
