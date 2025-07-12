@@ -6,12 +6,22 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import httpx
+import base64
+import re
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
 
-# 1. Claude API 키 설정 (Anthropic)
 CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
 CLAUDE_API_URL = "https://api.anthropic.com/v1/messages"
 
-# 2. RSS 피드 예시 (원하는 만큼 추가 가능)
+# Gmail API 설정
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+GMAIL_QUERY = 'subject:(Google 알리미)'
+CREDENTIALS_FILE = 'gmail_credentials.json'
+TOKEN_FILE = 'token.json'
+
+# 기존 RSS 피드 유지
 RSS_FEEDS = [
     "https://www.technologyreview.com/feed/",
     "https://singularityhub.com/feed/",
@@ -26,7 +36,6 @@ RSS_FEEDS = [
     "https://the-decoder.com/feed/"
 ]
 
-# 3. 기사 요약 함수 (Claude 사용)
 def summarize_article(title, url, content):
     prompt = f"""
     아래는 기술 관련 기사입니다. 제목과 내용을**한국어로 읽고**, 다음 2가지를 작성해주세요:
@@ -39,7 +48,6 @@ def summarize_article(title, url, content):
     번역 제목: ...
     요약:
     ... 
-
 
     제목: {title}
     내용: {content[:3000]}
@@ -61,7 +69,7 @@ def summarize_article(title, url, content):
         response.raise_for_status()
         result = response.json()
         full_text = result["content"][0]["text"].strip()
-        
+
         translated_title = ""
         summary = ""
         for line in full_text.splitlines():
@@ -78,7 +86,6 @@ def summarize_article(title, url, content):
         print(f"요약 실패: {e}")
         return "요약 실패"
 
-# 4. 기사 본문 추출 함수
 def extract_article_content(url):
     try:
         res = requests.get(url, timeout=5)
@@ -88,7 +95,6 @@ def extract_article_content(url):
     except:
         return ""
 
-# 5. 마크다운 파일 저장 함수
 def save_to_markdown(title, url, summary, original_title=None):
     today = datetime.date.today()
     year = today.strftime("%Y")
@@ -116,39 +122,66 @@ def save_to_markdown(title, url, summary, original_title=None):
         f.write(content)
 
 def is_duplicate(title):
-    today = datetime.date.today().strftime("%Y-%m-%d")
+    today = datetime.date.today()
+    year = today.strftime("%Y")
+    month = today.strftime("%m")
+    date = today.strftime("%Y-%m-%d")
+
     safe_title = "_".join(title.strip().split())[:50].replace('/', '-')
-    filename = f"{today}_{safe_title}.md"
-    full_path = os.path.join("docs/articles", filename)
-    return os.path.exists(full_path)
+    filename = f"{date}_{safe_title}.md"
+    path = os.path.join("docs", "articles", year, month, filename)
+    return os.path.exists(path)
 
+def fetch_alert_links():
+    creds = None
+    if os.path.exists(TOKEN_FILE):
+        creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+    else:
+        flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+        creds = flow.run_local_server(port=0)
+        with open(TOKEN_FILE, 'w') as token:
+            token.write(creds.to_json())
 
-# 6. 전체 수집 실행
+    service = build('gmail', 'v1', credentials=creds)
+    result = service.users().messages().list(userId='me', q=GMAIL_QUERY).execute()
+    messages = result.get('messages', [])
+
+    urls = []
+    for msg in messages[:5]:
+        msg_data = service.users().messages().get(userId='me', id=msg['id'], format='full').execute()
+        for part in msg_data['payload'].get('parts', []):
+            if part['mimeType'] == 'text/html':
+                data = part['body']['data']
+                html = base64.urlsafe_b64decode(data).decode('utf-8')
+                found_urls = re.findall(r'https?://[^\s"]+', html)
+                urls.extend(found_urls)
+
+    return list(set(urls))
+
 def run():
+    all_urls = fetch_alert_links()
+
     for feed_url in RSS_FEEDS:
         print(f"📡 피드 수집 중: {feed_url}")
         try:
             feed = feedparser.parse(feed_url)
+            for entry in feed.entries[:3]:
+                all_urls.append(entry.link)
         except Exception as e:
             print(f"❌ 피드 수집 실패 ({feed_url}): {e}")
+
+    for url in all_urls:
+        content = extract_article_content(url)
+        if not content or len(content) < 300:
             continue
 
-        for entry in feed.entries[:3]:
-            title = entry.title
-            url = entry.link
+        title = url.split('/')[-1].replace('-', ' ').replace('_', ' ')
+        if is_duplicate(title):
+            print(f"🚫 중복: {title}")
+            continue
 
-            if is_duplicate(title):
-                print(f"🚫 중복: {title}")
-                continue
-
-            content = extract_article_content(url)
-            if not content or len(content) < 300:
-                continue
-
-            translated_title, summary = summarize_article(title, url, content)
-            save_to_markdown(translated_title, url, summary, original_title=title)
-
-
+        translated_title, summary = summarize_article(title, url, content)
+        save_to_markdown(translated_title, url, summary, original_title=title)
 
 if __name__ == "__main__":
     run()
