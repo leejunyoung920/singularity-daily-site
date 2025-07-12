@@ -12,6 +12,11 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
+# GitHub Actions 환경에서는 실행하지 않도록
+if os.getenv("GITHUB_ACTIONS") == "true":
+    print("Skipping article collection on GitHub Actions.")
+    exit(0)
+
 CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
 CLAUDE_API_URL = "https://api.anthropic.com/v1/messages"
 
