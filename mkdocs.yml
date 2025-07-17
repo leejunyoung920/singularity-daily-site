@@ -1,6 +1,6 @@
 site_name: Singularity Daily
 site_url: https://leejunyoung920.github.io/singularity-daily-site/
-repo_url: https://github.com/leejunyoung920/singularity-daily-site
+repo_url: https://github.com/leejunyoung920/singularity-daily-site/
 theme:
   name: material
   language: ko
