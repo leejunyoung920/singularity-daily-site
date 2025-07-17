@@ -1,1 +1,37 @@
-site_name: My Docs
+site_name: Singularity Daily
+site_url: https://leejunyoung920.github.io/singularity-daily-site/
+repo_url: https://github.com/leejunyoung920/singularity-daily-site
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - footnotes
+  - meta
+
+plugins:
+  - search
+  - awesome-pages
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - awesome-pages
+
+nav:
+  - 홈: index.md
+  - 토픽: topics/index.md
+  - 기사: articles/
+  - 논문: papers/index.md
+
