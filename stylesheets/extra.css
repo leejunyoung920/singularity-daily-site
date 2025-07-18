@@ -1,0 +1,110 @@
+/* docs/stylesheets/extra.css */
+
+/* 사이드바 전체 영역 */
+.md-sidebar--primary {
+  width: 250px !important;
+  min-width: 200px !important;
+}
+
+/* 사이드바 내부 스크롤 영역 */
+.md-sidebar__scrollwrap {
+  max-height: 80vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 64px;
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+/* 네비게이션 목록 */
+.md-nav {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 네비게이션 항목 */
+.md-nav__item {
+  padding: 0rem 0;
+}
+
+/* 네비게이션 링크 */
+.md-nav__link {
+  padding: 0rem 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  position: relative;
+}
+
+/* 중첩된 네비게이션 항목 */
+.md-nav__item--nested {
+  position: relative;
+}
+
+/* 중첩된 항목의 링크 - 클릭 가능하게 수정 */
+.md-nav__item--nested > .md-nav__link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding-right: 2rem; /* 화살표 공간 확보 */
+}
+
+/* 화살표 아이콘 */
+.md-nav__item--nested > .md-nav__link::after {
+  content: "▶";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* 토글 체크박스 - 숨김 처리 */
+.md-nav__toggle {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* 기본적으로 하위 메뉴 숨기기 */
+.md-nav__item--nested > .md-nav {
+  display: none;
+  padding-left: 1rem;
+}
+
+/* JavaScript로 토글할 클래스 */
+.md-nav__item--nested.expanded > .md-nav {
+  display: block;
+}
+
+/* 확장된 상태의 화살표 */
+.md-nav__item--nested.expanded > .md-nav__link::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* 활성화된 항목 스타일 */
+.md-nav__item--active > .md-nav__link {
+  color: var(--md-accent-fg-color);
+  font-weight: 500;
+}
+
+/* 호버 효과 */
+.md-nav__link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 텍스트 선택 방지 */
+.md-nav__item--nested > .md-nav__link {
+  user-select: none;
+}
+
+/* 접근성을 위한 포커스 스타일 */
+.md-nav__link:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
