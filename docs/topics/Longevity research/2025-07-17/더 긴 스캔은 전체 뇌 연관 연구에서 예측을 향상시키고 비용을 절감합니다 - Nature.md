@@ -1,0 +1,23 @@
+# 더 긴 스캔은 전체 뇌 연관 연구에서 예측을 향상시키고 비용을 절감합니다 - Nature
+
+**원제목:** Longer scans boost prediction and cut costs in brain-wide association studies - Nature
+
+**요약:** PDF 다운로드
+
+
+
+
+
+
+
+
+논문
+
+오픈 액세스
+
+2025년 7월 16일 발행
+
+전체 뇌 연구에서 더 긴 스캔으로 예측력 향상과 비용 절감
+Leon Qi Rong Ooi ORCID: orcid.org/0000-0002-3546-45801,2,3,4,5 na1, Csaba Orban2,3,5 na1, Shaoshi Zhang ORCID: orcid.org/0000-0002-6352-91501,2,3,4,5 na1, Thomas E. Nichols ORCID: orcid.org/0000-0002-4516-51036,7, Trevor Wei Kiat Tan1,2,3,4,5, Ru Kong ORCID: orcid.org/0000-0001-7842-03292,3,4,5, Scott Marek8,9, Nico U. F. Dosenbach ORCID: orcid.org/0000-0002-6876-70788,9,10,11,12,13, Timothy O. Laumann ORCID: orcid.org/0000-0002-0428-427X9,14, Evan M. Gordon ORCID: orcid.org/0000-0002-2276-52378,9, Kwong Hsia Yap15,16, Fang Ji2,3, Joanna Su Xian Chong ORCID: orcid.org/0009-0008-5077-52062,3, Christopher Chen ORCID: orcid.org/0000-0002-1047-922515,16, Lijun An ORCID: orcid.org/0000-0003-1030-462517, Nicolai Fra
+
+[원문 링크](https://www.nature.com/articles/s41586-025-09250-1)
