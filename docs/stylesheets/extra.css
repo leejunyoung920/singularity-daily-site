@@ -33,52 +33,58 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: block;
+  position: relative;
 }
 
-/* 체크박스를 투명하게 만들되 클릭은 가능하게 유지 */
+/* 중첩된 네비게이션 항목 */
+.md-nav__item--nested {
+  position: relative;
+}
+
+/* 중첩된 항목의 링크 - 클릭 가능하게 수정 */
+.md-nav__item--nested > .md-nav__link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding-right: 2rem; /* 화살표 공간 확보 */
+}
+
+/* 화살표 아이콘 */
+.md-nav__item--nested > .md-nav__link::after {
+  content: "▶";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* 토글 체크박스 - 숨김 처리 */
 .md-nav__toggle {
   position: absolute;
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  z-index: 1;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 /* 기본적으로 하위 메뉴 숨기기 */
 .md-nav__item--nested > .md-nav {
   display: none;
+  padding-left: 1rem;
 }
 
-/* 체크박스가 체크되었을 때 하위 메뉴 보이기 */
-.md-nav__item--nested > .md-nav__toggle:checked ~ .md-nav {
+/* JavaScript로 토글할 클래스 */
+.md-nav__item--nested.expanded > .md-nav {
   display: block;
 }
 
-/* 네비게이션 링크 스타일 - 중첩된 항목의 경우 */
-.md-nav__item--nested > .md-nav__link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 0; /* 체크박스보다 낮은 z-index */
-}
-
-/* 화살표 아이콘 추가 */
-.md-nav__item--nested > .md-nav__link::after {
-  content: "▶";
-  font-size: 0.7em;
-  transition: transform 0.3s ease;
-  margin-left: auto;
-  pointer-events: none; /* 화살표는 클릭 이벤트 무시 */
-}
-
-/* 체크박스가 체크되었을 때 화살표 회전 */
-.md-nav__item--nested > .md-nav__toggle:checked ~ .md-nav__link::after {
-  transform: rotate(90deg);
+/* 확장된 상태의 화살표 */
+.md-nav__item--nested.expanded > .md-nav__link::after {
+  transform: translateY(-50%) rotate(90deg);
 }
 
 /* 활성화된 항목 스타일 */
@@ -87,7 +93,10 @@
   font-weight: 500;
 }
 
-/* 호버 효과 제거 - 깔끔한 인터페이스를 위해 */
+/* 호버 효과 */
+.md-nav__link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
 
 /* 텍스트 선택 방지 */
 .md-nav__item--nested > .md-nav__link {
@@ -95,12 +104,7 @@
 }
 
 /* 접근성을 위한 포커스 스타일 */
-.md-nav__item--nested > .md-nav__toggle:focus ~ .md-nav__link {
+.md-nav__link:focus {
   outline: 2px solid var(--md-accent-fg-color);
   outline-offset: 2px;
-}
-
-/* 중첩된 항목의 컨테이너 위치 조정 */
-.md-nav__item--nested {
-  position: relative;
 }
